@@ -1,0 +1,29 @@
+---
+import { services } from '../data/services';
+---
+
+<section id="layanan">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Layanan Kami</p>
+      <h2>Satu nomor untuk semua kebutuhan kedukaan</h2>
+    </div>
+    <div class="services-grid">
+      {services.map((s) => (
+        <article class="svc">
+          <svg
+            viewBox="0 0 40 40"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            set:html={s.icon}
+          />
+          <h3>{s.title}</h3>
+          <p>{s.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

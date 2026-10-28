@@ -1,0 +1,44 @@
+---
+const misi = [
+  {
+    strong: 'Memberikan pelayanan kedukaan',
+    text: 'yang profesional, responsif, dan penuh empati kepada setiap keluarga.',
+  },
+  {
+    strong: 'Menyediakan produk dan perlengkapan memorial',
+    text: 'berkualitas dengan standar terbaik untuk mendukung penghormatan terakhir yang layak dan bermartabat.',
+  },
+  {
+    strong: 'Membangun budaya pelayanan',
+    text: 'yang mengutamakan integritas, rasa hormat, dan perhatian terhadap kebutuhan setiap keluarga.',
+  },
+];
+---
+
+<section class="vm" id="visi">
+  <div class="wrap vm-grid">
+    <div class="vision">
+      <p class="eyebrow">Visi Kami</p>
+      <h2>Standar baru layanan kedukaan premium</h2>
+      <span class="rule"></span>
+      <p>
+        Menjadi standar baru dalam layanan kedukaan premium yang memberikan
+        ketenangan, penghormatan, dan pelayanan terbaik bagi setiap keluarga.
+      </p>
+    </div>
+
+    <div class="mission">
+      <p class="eyebrow">Misi Kami</p>
+      <ol>
+        {misi.map((m, i) => (
+          <li>
+            <span>{i + 1}</span>
+            <p>
+              <strong>{m.strong}</strong> {m.text}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

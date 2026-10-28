@@ -1,0 +1,20 @@
+---
+import { values } from '../data/values';
+---
+
+<section class="values">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Nilai-Nilai Kami</p>
+      <h2>Cara kami bekerja</h2>
+    </div>
+    <ul class="values-list">
+      {values.map((v) => (
+        <li>
+          <h3>{v.title}</h3>
+          <p>{v.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

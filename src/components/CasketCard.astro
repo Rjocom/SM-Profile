@@ -1,0 +1,25 @@
+---
+import { waLink, type Casket } from '../data/caskets';
+
+interface Props {
+  casket: Casket;
+}
+const { casket } = Astro.props;
+const href = waLink(
+  `Halo Serenity Memorial, saya ingin menanyakan peti ${casket.name}.`
+);
+---
+
+<article class="casket">
+  <div class="plate">
+    <img src={casket.image} alt={`Peti ${casket.name}`} loading="lazy" />
+  </div>
+  <div class="info">
+    <h3>{casket.name}</h3>
+    <p>{casket.description}</p>
+    <p class="price">
+      <small>Harga</small>{casket.price}
+    </p>
+    <a class="ask" href={href} target="_blank" rel="noopener">Tanya model ini</a>
+  </div>
+</article>

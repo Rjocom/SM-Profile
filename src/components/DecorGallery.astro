@@ -1,0 +1,36 @@
+---
+const decorImages = [
+  {
+    src: '/images/decor-1.jpg',
+    alt: 'Dekorasi persemayaman dengan lampu gantung, salib emas, dan lilin',
+  },
+  {
+    src: '/images/decor-2.jpg',
+    alt: 'Dekorasi serba putih dengan rangkaian bunga dan kursi bersarung',
+  },
+  {
+    src: '/images/decor-3.jpg',
+    alt: 'Dekorasi elegan untuk ruang persemayaman',
+  },
+];
+---
+
+<section class="decor" id="dekorasi">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Koleksi Dekorasi</p>
+      <h2>Suasana yang elegan, hangat, dan penuh penghormatan</h2>
+      <p>
+        Berbagai pilihan dekorasi dengan kualitas terbaik untuk ruang
+        persemayaman keluarga Anda.
+      </p>
+    </div>
+    <div class="gallery">
+      {decorImages.map((img) => (
+        <figure>
+          <img src={img.src} alt={img.alt} loading="lazy" />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

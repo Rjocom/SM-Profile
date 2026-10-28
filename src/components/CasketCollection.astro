@@ -1,0 +1,35 @@
+---
+import { casketTiers } from '../data/caskets';
+import CasketCard from './CasketCard.astro';
+---
+
+<section id="peti">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Koleksi Peti</p>
+      <h2>Penghormatan terakhir yang layak dan bermartabat</h2>
+      <p>
+        Pilihan peti lengkap, mulai dari kelas premium hingga ekonomis. Hubungi
+        kami untuk melihat model langsung dan menanyakan harga final.
+      </p>
+    </div>
+
+    {casketTiers.map((tier) => (
+      <div class="tier">
+        <div class="tier-head">
+          <div>
+            <h3>{tier.name}</h3>
+            <p>{tier.description}</p>
+          </div>
+        </div>
+        <div class="caskets">
+          {tier.items.length > 0 ? (
+            tier.items.map((c) => <CasketCard casket={c} />)
+          ) : (
+            <p class="empty">Segera hadir.</p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
