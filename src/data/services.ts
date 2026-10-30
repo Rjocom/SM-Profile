@@ -32,7 +32,7 @@ export const services: Service[] = [
   },
   {
     title: 'Layanan Kargo Jenazah',
-    description: 'Menyediakan perlengkapan pendukung untuk kebutuhan kedukaan.',
+    description: 'Menyediakan layanan kargo pengiriman jenazah yang aman dan profesional.',
     icon: '<rect x="5" y="13" width="30" height="20" rx="2"/><path d="M15 13V8h10v5M5 22h30"/><path d="M20 20v4"/>',
   },
   {
