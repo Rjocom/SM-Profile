@@ -31,6 +31,11 @@ export const services: Service[] = [
     icon: '<rect x="5" y="13" width="30" height="20" rx="2"/><path d="M15 13V8h10v5M5 22h30"/><path d="M20 20v4"/>',
   },
   {
+    title: 'Layanan Kargo Jenazah',
+    description: 'Menyediakan perlengkapan pendukung untuk kebutuhan kedukaan.',
+    icon: '<rect x="5" y="13" width="30" height="20" rx="2"/><path d="M15 13V8h10v5M5 22h30"/><path d="M20 20v4"/>',
+  },
+  {
     title: 'Layanan 24 Jam',
     description: 'Kami siap melayani Anda kapan saja dan di mana saja.',
     icon: '<circle cx="20" cy="20" r="14"/><path d="M20 11v9l6 4"/>',
