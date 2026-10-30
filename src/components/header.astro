@@ -1,6 +1,7 @@
 ---
 import { waLink } from "../data/caskets";
 const waHref = waLink("Halo Serenity Memorial, saya membutuhkan bantuan.");
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 ---
 
 <header class="top">
@@ -10,12 +11,12 @@ const waHref = waLink("Halo Serenity Memorial, saya membutuhkan bantuan.");
     </a>
 
     <nav class="nav-desktop" aria-label="Navigasi utama">
-      <a href="/tentang">Tentang</a>
-      <a href="/visi-misi">Visi &amp; Misi</a>
-      <a href="/layanan">Layanan</a>
-      <a href="/koleksi-peti">Koleksi Peti</a>
-      <a href="/dekorasi">Dekorasi</a>
-      <a href="/kontak">Kontak</a>
+      <a href="/tentang" aria-current={currentPath === "/tentang" ? "page" : undefined}>Tentang</a>
+      <a href="/visi-misi" aria-current={currentPath === "/visi-misi" ? "page" : undefined}>Visi &amp; Misi</a>
+      <a href="/layanan" aria-current={currentPath === "/layanan" ? "page" : undefined}>Layanan</a>
+      <a href="/koleksi-peti" aria-current={currentPath === "/koleksi-peti" ? "page" : undefined}>Koleksi Peti</a>
+      <a href="/dekorasi" aria-current={currentPath === "/dekorasi" ? "page" : undefined}>Dekorasi</a>
+      <a href="/kontak" aria-current={currentPath === "/kontak" ? "page" : undefined}>Kontak</a>
     </nav>
 
     <a
@@ -42,12 +43,12 @@ const waHref = waLink("Halo Serenity Memorial, saya membutuhkan bantuan.");
 
   <!-- Perbaikan: Ini harusnya nav-mobile, bukan nav-desktop -->
   <nav class="nav-mobile" id="mobile-nav" aria-label="Navigasi mobile" hidden>
-    <a href="/tentang">Tentang</a>
-    <a href="/visi-misi">Visi &amp; Misi</a>
-    <a href="/layanan">Layanan</a>
-    <a href="/koleksi-peti">Koleksi Peti</a>
-    <a href="/dekorasi">Dekorasi</a>
-    <a href="/kontak">Kontak</a>
+    <a href="/tentang" aria-current={currentPath === "/tentang" ? "page" : undefined}>Tentang</a>
+    <a href="/visi-misi" aria-current={currentPath === "/visi-misi" ? "page" : undefined}>Visi &amp; Misi</a>
+    <a href="/layanan" aria-current={currentPath === "/layanan" ? "page" : undefined}>Layanan</a>
+    <a href="/koleksi-peti" aria-current={currentPath === "/koleksi-peti" ? "page" : undefined}>Koleksi Peti</a>
+    <a href="/dekorasi" aria-current={currentPath === "/dekorasi" ? "page" : undefined}>Dekorasi</a>
+    <a href="/kontak" aria-current={currentPath === "/kontak" ? "page" : undefined}>Kontak</a>
     <a class="btn btn-gold" href={waHref} target="_blank" rel="noopener">
       WhatsApp 24 Jam
     </a>
