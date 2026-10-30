@@ -2,7 +2,7 @@
 const aboutImages = [
   { src: '/images/about.webp', alt: 'Gedung layanan dan armada Serenity Memorial' },
   { src: '/images/mobil.webp', alt: 'Armada Serenity Memorial di depan gedung layanan' },
-  { src: '/images/slide/showroom.webp', alt: 'Showroom koleksi peti Serenity Memorial' },
+  { src: '/images/slide/showroom-optimized.webp', alt: 'Showroom koleksi peti Serenity Memorial' },
 ];
 ---
 
@@ -30,7 +30,7 @@ const aboutImages = [
       <div class="slider-track" id="about-track">
         {aboutImages.map((img, index) => (
           <div class={`slide ${index === 0 ? 'active' : ''}`}>
-            <img src={img.src} alt={img.alt} loading="lazy" />
+            <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
           </div>
         ))}
       </div>
