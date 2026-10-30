@@ -1,6 +1,5 @@
+// @ts-check
 import { defineConfig } from 'astro/config';
 
-export default defineConfig({
-  site: 'https://Rjocom.github.io',
-  base: '/SM-Profile', // Nama repo Anda (perhatikan huruf besar/kecilnya)
-});
+// https://astro.build/config
+export default defineConfig({});
