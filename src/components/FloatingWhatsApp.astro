@@ -1,0 +1,61 @@
+---
+import { waLink } from '../data/caskets';
+const waHref = waLink('Halo Serenity Memorial, saya membutuhkan bantuan.');
+---
+
+<a
+  href={waHref}
+  class="floating-wa"
+  target="_blank"
+  rel="noopener"
+  aria-label="Hubungi kami via WhatsApp"
+>
+  <!-- Ikon WhatsApp Resmi -->
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.613 4.64 1.787 6.667l-1.92 7.013 7.173-1.88A13.253 13.253 0 0 0 16.004 29.333C23.36 29.333 29.333 23.36 29.333 16S23.36 2.667 16.004 2.667zm0 24a10.65 10.65 0 0 1-5.44-1.493l-.387-.24-4.267 1.12 1.147-4.16-.267-.427A10.626 10.626 0 0 1 5.333 16c0-5.893 4.773-10.667 10.671-10.667 5.893 0 10.667 4.774 10.667 10.667 0 5.894-4.774 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-1.04-.293-.106-.506-.16-.72.16-.213.32-.827 1.04-.987 1.253-.16.214-.32.24-.64.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.147-.146.32-.373.48-.56.16-.187.213-.32.32-.534.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.986-2.373-.267-.64-.533-.56-.72-.56h-.64c-.213 0-.56.08-.853.4-.293.32-1.12 1.093-1.12 2.667 0 1.573 1.147 3.093 1.307 3.306.16.214 2.253 3.44 5.466 4.827 2.027.88 2.827.96 3.84.8 1.014-.16 3.227-1.32 3.68-2.6.454-1.28.454-2.373.32-2.6-.133-.226-.493-.36-.813-.52z" />
+  </svg>
+</a>
+
+<style>
+  .floating-wa {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366; /* Warna hijau khas WhatsApp */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 9999; /* Memastikan selalu di atas elemen lain */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .floating-wa:hover {
+    transform: scale(1.1) translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    color: white; /* Memastikan ikon tetap berwarna putih saat di-hover */
+  }
+
+  .floating-wa svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+  }
+
+  @media (max-width: 768px) {
+    .floating-wa {
+      bottom: 20px;
+      right: 20px;
+      width: 54px;
+      height: 54px;
+    }
+    .floating-wa svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+</style>

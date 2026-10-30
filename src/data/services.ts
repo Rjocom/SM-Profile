@@ -11,7 +11,7 @@ export const services: Service[] = [
     icon: '<path d="M15 4h10l6 9-5 23H14L9 13z"/><path d="M20 12v14M15 17h10"/>',
   },
   {
-    title: 'Mobil Jenazah / Ambulans',
+    title: 'Mobil Jenazah',
     description: 'Layanan transportasi jenazah yang aman dan profesional.',
     icon: '<path d="M3 28V14a2 2 0 0 1 2-2h18l8 7h6v9z"/><circle cx="12" cy="29" r="3.5" fill="var(--bg)"/><circle cx="29" cy="29" r="3.5" fill="var(--bg)"/><path d="M23 12v7"/>',
   },

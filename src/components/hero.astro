@@ -1,6 +1,6 @@
 ---
-import { waLink } from '../data/caskets';
-const waHref = waLink('Halo Serenity Memorial, saya membutuhkan bantuan.');
+import { waLink } from "../data/caskets";
+const waHref = waLink("Halo Serenity Memorial, saya membutuhkan bantuan.");
 ---
 
 <section class="hero" id="atas" style="padding-block: clamp(48px, 7vw, 96px);">
@@ -15,26 +15,24 @@ const waHref = waLink('Halo Serenity Memorial, saya membutuhkan bantuan.');
       fill="none"
       stroke="#c9a24d"
       stroke-width="1.2"
-      opacity=".7"
-    ></path>
+      opacity=".7"></path>
     <path
       d="M-20 590 C 280 460, 470 660, 770 530 S 1230 400, 1480 505"
       fill="none"
       stroke="#c9a24d"
       stroke-width=".8"
-      opacity=".5"
-    ></path>
+      opacity=".5"></path>
     <path
       d="M-20 620 C 300 500, 480 680, 780 560 S 1240 440, 1480 540"
       fill="none"
       stroke="#c9a24d"
       stroke-width=".6"
-      opacity=".35"
-    ></path>
+      opacity=".35"></path>
   </svg>
 
   <div class="wrap">
-    <div class="hero-copy">
+    <div class="hero-copy fade-in">
+      <h2 class="hero-brand">Serenity Memorial</h2>
       <p class="eyebrow">Funeral Director &amp; Memorial Service · Manado</p>
       <h1>Where Memories are <span>Honored</span></h1>
       <p class="lead">
@@ -46,7 +44,7 @@ const waHref = waLink('Halo Serenity Memorial, saya membutuhkan bantuan.');
         <a class="btn btn-gold" href={waHref} target="_blank" rel="noopener">
           Hubungi via WhatsApp
         </a>
-        <a class="btn btn-line" href="#peti">Lihat Koleksi Peti</a>
+        <a class="btn btn-line" href="/koleksi-peti">Lihat Koleksi Peti</a>
       </div>
       <ul class="facts">
         <li>Layanan 24 jam</li>
@@ -55,7 +53,7 @@ const waHref = waLink('Halo Serenity Memorial, saya membutuhkan bantuan.');
       </ul>
     </div>
 
-    <div class="arch">
+    <div class="arch" fade-in delay-2>
       <div class="arch-frame">
         <img
           src="/images/hero.jpg"

@@ -1,3 +1,11 @@
+---
+const aboutImages = [
+  { src: '/images/about.jpg', alt: 'Gedung layanan dan armada Serenity Memorial' },
+  { src: '/images/mobil.png', alt: 'Armada Serenity Memorial di depan gedung layanan' },
+  { src: '/images/slide/showroom.jpeg', alt: 'Showroom koleksi peti Serenity Memorial' },
+];
+---
+
 <section class="about" id="tentang">
   <div class="wrap">
     <h2 class="about-quote">Where Memories are Honored</h2>
@@ -16,13 +24,229 @@
       <p>Terima kasih atas kepercayaan yang diberikan kepada Serenity Memorial.</p>
       <p class="sign">Hormat kami, Serenity Memorial</p>
     </div>
-    <div class="about-photo">
-      <img
-        src="/images/about.jpg"
-        alt="Gedung layanan dan armada Serenity Memorial"
-        width="1200"
-        height="559"
-      />
+    
+    <!-- Bagian Slider Foto -->
+    <div class="about-slider">
+      <div class="slider-track" id="about-track">
+        {aboutImages.map((img, index) => (
+          <div class={`slide ${index === 0 ? 'active' : ''}`}>
+            <img src={img.src} alt={img.alt} loading="lazy" />
+          </div>
+        ))}
+      </div>
+      
+      <!-- Tombol Navigasi (Kiri & Kanan) -->
+      <button class="slider-btn prev" id="slider-prev" aria-label="Foto sebelumnya">&#10094;</button>
+      <button class="slider-btn next" id="slider-next" aria-label="Foto selanjutnya">&#10095;</button>
+      
+      <!-- Titik Indikator -->
+      <div class="slider-dots" id="slider-dots">
+        {aboutImages.map((_, index) => (
+          <span class={`dot ${index === 0 ? 'active' : ''}`} data-index={index}></span>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  const track = document.getElementById('about-track');
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.getElementById('slider-prev');
+  const nextBtn = document.getElementById('slider-next');
+  
+  let currentIndex = 0;
+  let autoPlayInterval: number | undefined;
+
+  function goToSlide(index: number) {
+    // Atur index agar berputar (loop)
+    if (index < 0) {
+      currentIndex = slides.length - 1;
+    } else if (index >= slides.length) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
+    }
+
+    // Geser track sesuai index
+    if (track) {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Update class aktif pada slide dan dot
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentIndex);
+    });
+    
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  // Fungsi untuk memulai Auto-play (Slide otomatis tiap 4 detik)
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, 4000);
+  }
+
+  // Hentikan auto-play saat kursor diarahkan ke gambar
+  function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+  }
+
+  // Event Listener untuk Tombol
+  prevBtn?.addEventListener('click', () => {
+    goToSlide(currentIndex - 1);
+    stopAutoPlay();
+    startAutoPlay(); // Reset timer
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    goToSlide(currentIndex + 1);
+    stopAutoPlay();
+    startAutoPlay();
+  });
+
+  // Event Listener untuk Dot
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      goToSlide(i);
+      stopAutoPlay();
+      startAutoPlay();
+    });
+  });
+
+  // Hover efek untuk menghentikan slide sebentar
+  const sliderContainer = document.querySelector('.about-slider');
+  sliderContainer?.addEventListener('mouseenter', stopAutoPlay);
+  sliderContainer?.addEventListener('mouseleave', startAutoPlay);
+
+  // Jalankan auto-play saat halaman dimuat
+  startAutoPlay();
+</script>
+
+<style>
+  /* Mengatur layout About dari grid bawaan menjadi block agar slider bisa lebar */
+  .about .wrap {
+    display: block;
+  }
+
+  .about-quote {
+    margin-bottom: 24px;
+  }
+
+  .about-text {
+    max-width: 800px;
+    margin-bottom: 48px;
+  }
+
+  /* Styling Slider */
+  .about-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 21 / 9; /* Rasio lebar dan tinggi gambar */
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    background: var(--card);
+  }
+
+  .slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  /* Tombol Navigasi (Kiri / Kanan) */
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(11, 26, 56, 0.6); /* Navy transparan */
+    color: var(--gold-soft);
+    border: 1px solid var(--gold);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .slider-btn:hover {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  .slider-btn.prev {
+    left: 20px;
+  }
+
+  .slider-btn.next {
+    right: 20px;
+  }
+
+  /* Titik Indikator (Dots) */
+  .slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+
+  /* Responsif untuk layar HP */
+  @media (max-width: 820px) {
+    .about-slider {
+      aspect-ratio: 16 / 9;
+    }
+    
+    .slider-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 1rem;
+    }
+    
+    .slider-btn.prev {
+      left: 10px;
+    }
+
+    .slider-btn.next {
+      right: 10px;
+    }
+  }
+</style>

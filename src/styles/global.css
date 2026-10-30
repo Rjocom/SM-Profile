@@ -172,6 +172,7 @@ section {
 .top img {
   width: 92px;
 }
+
 /* 
 .top nav {
   display: flex;
@@ -279,10 +280,13 @@ section {
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 7.2vw, 5.6rem);
+  /* Turunkan ukuran font dari 3rem - 5.6rem menjadi 2.2rem - 4rem */
+  font-size: clamp(2.2rem, 5vw, 4rem); 
   font-style: italic;
   font-weight: 500;
   color: #fbf5e6;
+  margin-top: 8px; /* Tambahkan jarak sedikit dari teks di atasnya */
+  line-height: 1.15; /* Menjaga jarak antar baris tetap rapi */
 }
 
 .hero h1 span {
@@ -454,10 +458,35 @@ section {
 }
 
 /* visi misi */
-.vm {
-  background: var(--navy);
+.vm,
+#layanan,
+#peti,
+.decor,
+.about {
+  background:
+    radial-gradient(900px 400px at 10% 0%, rgba(201, 162, 77, .12), transparent 70%),
+    linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, #1b3260 100%);
+}
+
+.vm,
+.about {
   color: var(--ivory);
-  background-image: radial-gradient(900px 400px at 10% 0%, #17306100, transparent);
+}
+
+.about-quote {
+  color: #fbf5e6;
+}
+
+.about-text {
+  color: #d7d9e2;
+}
+
+.about-text em {
+  color: var(--gold-soft);
+}
+
+.about-text .sign {
+  color: #fbf5e6;
 }
 
 .vm .eyebrow {
@@ -536,23 +565,46 @@ section {
 }
 
 /* layanan */
+#layanan .section-head .eyebrow,
+#peti .section-head .eyebrow {
+  color: var(--gold-soft);
+}
+
+#layanan .section-head h2,
+#peti .section-head h2,
+#peti .tier-head h3 {
+  color: #fbf5e6;
+}
+
+#layanan .section-head > p:not(.eyebrow),
+#peti .section-head > p:not(.eyebrow),
+#peti .tier-head p {
+  color: #d7d9e2;
+}
+
+#peti .tier-head {
+  border-color: rgba(201, 162, 77, .3);
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  /* Trik garis grid: gunakan gap dan background */
+  gap: 1px;
+  background-color: var(--line); 
+  border: 1px solid var(--line);
 }
 
 .svc {
   padding: 30px 26px 32px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
   display: grid;
   gap: 10px;
   align-content: start;
   min-width: 0;
-  background: var(--bg);
+  background-color: var(--bg); /* Latar belakang kotak menutupi warna garis */
+  /* Hapus border per kotak karena garis sudah dibuat oleh gap di atas */
+  border: none; 
+  transition: background-color 0.3s ease;
 }
 
 .svc:hover {
@@ -684,16 +736,20 @@ section {
 
 .casket .plate {
   background: var(--plate);
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 5;        /* portrait */
+  min-height: 240px;
+  overflow: hidden;
   display: grid;
   place-items: center;
-  padding: 10px;
+  padding: 0;
 }
 
 .casket .plate img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .casket .info {
@@ -744,7 +800,6 @@ section {
 
 /* dekorasi */
 .decor {
-  background: var(--navy);
   color: var(--ivory);
 }
 
@@ -1155,6 +1210,7 @@ footer small {
 
 /* Sembunyikan WA button desktop di mobile, karena sudah ada di panel */
 @media (max-width: 820px) {
+
   .nav-desktop,
   .btn-wa {
     display: none;
@@ -1168,4 +1224,95 @@ footer small {
 /* Cegah scroll body saat menu terbuka */
 body.nav-open {
   overflow: hidden;
+}
+
+/* ============================================
+   ANIMASI SCROLL (FADE IN UP)
+   ============================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay untuk efek bergantian (staggered) */
+.fade-in.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.fade-in.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.fade-in.delay-3 {
+  transition-delay: 0.3s;
+}
+
+.fade-in.delay-4 {
+  transition-delay: 0.4s;
+}
+
+.hero-brand {
+  font-family: var(--font-display, "Cormorant Garamond", serif);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 600;
+  
+  /* Membuat efek warna emas yang lebih mewah (gradient) */
+  background: linear-gradient(180deg, #f7e5b5 0%, #c9a24d 50%, #a67c2e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  letter-spacing: 0.04em;
+  margin-bottom: -10px;
+  line-height: 1.1;
+}
+
+@media (max-width: 820px) {
+  .hero-copy {
+    justify-items: center !important;
+    text-align: center;
+  }
+
+  .cta-row {
+    justify-content: center;
+  }
+
+  .facts {
+    justify-content: center;
+  }
+
+  /* Jika ada aturan lain yang menimpa .hero-brand di mobile, tambahkan di sini */
+  .hero-brand {
+    margin-bottom: 8px;
+    /* Beri jarak sedikit saat di tengah */
+  }
+}
+
+/* ============================================
+   NAVBAR ACTIVE STATE
+   ============================================ */
+.nav-desktop a[aria-current="page"],
+.nav-mobile a[aria-current="page"] {
+  color: var(--gold) !important;
+  opacity: 1 !important;
+  font-weight: 600;
+}
+
+/* Opsional: Garis bawah tipis untuk menu aktif di desktop */
+.nav-desktop a[aria-current="page"] {
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 4px;
+}
+
+/* Opsional: Latar belakang sedikit menyala untuk menu aktif di mobile */
+.nav-mobile a[aria-current="page"] {
+  background: rgba(201, 162, 77, 0.15);
+  border-left: 3px solid var(--gold);
 }

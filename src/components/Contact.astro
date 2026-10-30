@@ -1,0 +1,206 @@
+---
+import { waLink } from '../data/caskets';
+const waHref = waLink('Halo Serenity Memorial, saya membutuhkan bantuan.');
+---
+
+<section class="contact-page">
+  <div class="wrap contact-grid">
+    
+    <!-- Kiri: Teks & Tombol -->
+    <div class="contact-copy fade-in">
+      <p class="eyebrow">Hubungi Kami</p>
+      <h1>Kami siap mendampingi, kapan pun Anda membutuhkan</h1>
+      <p class="lead">Hubungi Serenity Memorial, jasa kedukaan Manado. Tim kami melayani 24 jam.</p>
+      <a class="btn btn-gold" href={waHref} target="_blank" rel="noopener" style="margin-top: 12px;">
+        Chat WhatsApp Sekarang
+      </a>
+    </div>
+
+    <!-- Kanan: Kartu Informasi -->
+    <div class="contact-card-glass fadde-in">
+      
+      <!-- Baris WhatsApp -->
+      <div class="row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <div>
+          <div class="label">WHATSAPP</div>
+          <div class="val">+62 896-8877-0888</div>
+        </div>
+        <button class="copy-btn" type="button" data-copy="+6289688770888">Salin</button>
+      </div>
+
+      <!-- Baris Instagram -->
+      <div class="row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        <div>
+          <div class="label">INSTAGRAM</div>
+          <div class="val">@serenitymemorial.manado</div>
+        </div>
+      </div>
+
+      <!-- Baris Alamat -->
+      <div class="row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <div>
+          <div class="label">LAYANAN</div>
+          <div class="val">Kelurahan Islam, Tuminting, Kota Manado</div>
+        </div>
+      </div>
+
+      <!-- Baris Jam -->
+      <div class="row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <div>
+          <div class="label">JAM LAYANAN</div>
+          <div class="val">24 Jam</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Script untuk tombol Salin
+  const copyButtons = document.querySelectorAll('.copy-btn');
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const textToCopy = btn.getAttribute('data-copy');
+      if (textToCopy) {
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          const originalText = btn.textContent;
+          btn.textContent = 'Tersalin!';
+          setTimeout(() => { btn.textContent = originalText; }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin', err);
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Layout Khusus Halaman Kontak */
+  .contact-page {
+    background:
+      radial-gradient(900px 400px at 10% 0%, rgba(201, 162, 77, .12), transparent 70%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, #1b3260 100%);
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    padding-block: 80px;
+    color: #fff;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 8vw, 100px);
+    align-items: center;
+    width: 100%;
+  }
+
+  .contact-copy .eyebrow {
+    color: var(--gold-soft, #e6cf94);
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+  }
+
+  .contact-copy h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    color: #fbf5e6;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .contact-copy .lead {
+    font-size: 1.1rem;
+    color: #d7d9e2;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+
+  .contact-card-glass {
+    background: rgba(18, 37, 76, 0.6);
+    border: 1px solid rgba(201, 162, 77, 0.3);
+    border-radius: 8px;
+    padding: 20px 40px;
+    backdrop-filter: blur(10px);
+  }
+
+  .contact-card-glass .row {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .contact-card-glass .row:last-child {
+    border-bottom: none;
+  }
+
+  .contact-card-glass svg {
+    width: 28px;
+    height: 28px;
+    color: var(--gold, #c9a24d);
+  }
+
+  .contact-card-glass .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: #8a95b1;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .contact-card-glass .val {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fbf5e6;
+  }
+
+  .copy-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--gold, #c9a24d);
+  }
+
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    
+    .contact-card-glass {
+      padding: 10px 24px;
+    }
+  }
+</style>
