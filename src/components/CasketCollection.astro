@@ -24,7 +24,13 @@ import CasketCard from './CasketCard.astro';
         </div>
         <div class="caskets">
           {tier.items.length > 0 ? (
-            tier.items.map((c) => <CasketCard casket={c} />)
+            tier.items.map((c, index) => (
+              <CasketCard
+                casket={c}
+                loading={tier.name === 'Premium' && index < 3 ? 'eager' : 'lazy'}
+                priority={tier.name === 'Premium' && index === 0}
+              />
+            ))
           ) : (
             <p class="empty">Segera hadir.</p>
           )}

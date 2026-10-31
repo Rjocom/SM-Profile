@@ -30,9 +30,15 @@ const decorImages = [
       </p>
     </div>
     <div class="gallery">
-      {decorImages.map((img) => (
-        <figure class="fade-in" >
-          <img src={img.src} alt={img.alt} loading="lazy" />
+      {decorImages.map((img, index) => (
+        <figure class="fade-in">
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading="eager"
+            decoding="async"
+            fetchpriority={index === 0 ? 'high' : 'auto'}
+          />
         </figure>
       ))}
     </div>

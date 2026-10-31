@@ -3,8 +3,10 @@ import { waLink, type Casket } from '../data/caskets';
 
 interface Props {
   casket: Casket;
+  loading: 'eager' | 'lazy';
+  priority: boolean;
 }
-const { casket } = Astro.props;
+const { casket, loading, priority } = Astro.props;
 const href = waLink(
   `Halo Serenity Memorial, saya ingin menanyakan peti ${casket.name}.`
 );
@@ -12,7 +14,13 @@ const href = waLink(
 
 <article class="casket fade-in">
   <div class="plate">
-    <img src={casket.image} alt={`Peti ${casket.name}`} loading="lazy" />
+    <img
+      src={casket.image}
+      alt={`Peti ${casket.name}`}
+      loading={loading}
+      decoding="async"
+      fetchpriority={priority ? 'high' : 'auto'}
+    />
   </div>
   <div class="info">
     <h3>{casket.name}</h3>
