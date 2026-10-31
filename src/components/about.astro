@@ -1,8 +1,25 @@
 ---
 const aboutImages = [
-  { src: '/images/about.webp', alt: 'Gedung layanan dan armada Serenity Memorial' },
-  { src: '/images/mobil.webp', alt: 'Armada Serenity Memorial di depan gedung layanan' },
-  { src: '/images/slide/showroom-optimized.webp', alt: 'Showroom koleksi peti Serenity Memorial' },
+  {
+    src: '/images/about.webp',
+    alt: 'Gedung layanan dan armada Serenity Memorial',
+    caption: 'Gedung Serenity Memorial dan armada layanan',
+  },
+  {
+    src: '/images/mobil.webp',
+    alt: 'Armada Serenity Memorial di depan gedung layanan',
+    caption: 'Armada mobil jenazah Serenity Memorial',
+  },
+  {
+    src: '/images/slide/showroom-optimized.webp',
+    alt: 'Showroom koleksi peti Serenity Memorial',
+    caption: 'Showroom dengan beragam pilihan peti jenazah',
+  },
+  {
+    src: '/images/slide/layanan-1.webp',
+    alt: 'Tim Serenity Memorial mendampingi keluarga dalam acara kedukaan',
+    caption: 'Pendampingan keluarga dalam suasana kedukaan',
+  },
 ];
 ---
 
@@ -31,6 +48,7 @@ const aboutImages = [
         {aboutImages.map((img, index) => (
           <div class={`slide ${index === 0 ? 'active' : ''}`}>
             <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+            <p class="slide-caption">{img.caption}</p>
           </div>
         ))}
       </div>
@@ -162,6 +180,7 @@ const aboutImages = [
   .slide {
     min-width: 100%;
     height: 100%;
+    position: relative;
   }
 
   .slide img {
@@ -169,6 +188,18 @@ const aboutImages = [
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
+  }
+
+  .slide-caption {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 48px 24px 24px;
+    background: linear-gradient(transparent, rgba(11, 26, 56, .82));
+    color: #fff;
+    font-size: clamp(.9rem, 2vw, 1.1rem);
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .35);
   }
 
   /* Tombol Navigasi (Kiri / Kanan) */
@@ -207,7 +238,7 @@ const aboutImages = [
   /* Titik Indikator (Dots) */
   .slider-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 74px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -247,6 +278,15 @@ const aboutImages = [
 
     .slider-btn.next {
       right: 10px;
+    }
+
+    .slide-caption {
+      padding: 36px 48px 20px;
+      font-size: .85rem;
+    }
+
+    .slider-dots {
+      bottom: 62px;
     }
   }
 </style>
