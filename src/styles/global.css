@@ -2,49 +2,22 @@
   --navy: #0b1a38;
   --navy-2: #12254c;
   --gold: #c9a24d;
-  --gold-soft: #e6cf94;
-  --ivory: #f6efe0;
-  --bg: #faf6ee;
-  --bg-alt: #f1e9d8;
-  --card: #fffdf8;
-  --fg: #0e1c3a;
-  --muted: #4b5470;
-  --accent: #86661c;
-  --line: #e0d3b6;
-  --plate: #f6f0e4;
+  --gold-soft: #e4ce9b;
+  --ivory: #fffdf8;
+  --bg: #ffffff;
+  --bg-alt: #fbf9f4;
+  --card: #ffffff;
+  --fg: #12254c;
+  --muted: #5d6576;
+  --accent: #96701f;
+  --line: #eadfc7;
+  --plate: #fffdf8;
   --banner-op: .55;
+  color-scheme: light;
   --font-display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
   --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   /* sementara kosongkan banner; nanti diisi url('/images/hero.jpg') */
   --banner: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0a1530;
-    --bg-alt: #0e1c3b;
-    --card: #12244a;
-    --fg: #f4ecd9;
-    --muted: #b6bac8;
-    --accent: #dcbb68;
-    --line: #2b3b63;
-    --plate: #f1e9d9;
-    --banner-op: .12;
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #0a1530;
-  --bg-alt: #0e1c3b;
-  --card: #12244a;
-  --fg: #f4ecd9;
-  --muted: #b6bac8;
-  --accent: #dcbb68;
-  --line: #2b3b63;
-  --plate: #f1e9d9;
-  --banner-op: .12;
-  color-scheme: dark;
 }
 
 * {
@@ -157,8 +130,9 @@ section {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   z-index: 20;
-  background: var(--navy);
-  border-bottom: 1px solid rgba(201, 162, 77, .28);
+  background: rgba(255, 255, 255, .96);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 18px rgba(11, 26, 56, .04);
 }
 
 .top .wrap {
@@ -219,11 +193,13 @@ section {
 
 .btn-line {
   background: transparent;
-  color: var(--ivory);
+  color: var(--fg);
+  border-color: var(--line);
 }
 
 .btn-line:hover {
-  background: rgba(201, 162, 77, .14);
+  background: rgba(201, 162, 77, .1);
+  border-color: var(--gold);
 }
 
 .btn-sm {
@@ -240,8 +216,11 @@ section {
 
 /* hero */
 .hero {
-  background: radial-gradient(1100px 520px at 78% 8%, #1b3468 0%, transparent 60%), linear-gradient(180deg, var(--navy) 0%, #081330 100%);
-  color: var(--ivory);
+  background:
+    radial-gradient(900px 420px at 84% 8%, rgba(201, 162, 77, .12), transparent 68%),
+    radial-gradient(850px 460px at 8% 100%, rgba(18, 37, 76, .045), transparent 72%),
+    #fff;
+  color: var(--fg);
   position: relative;
   overflow: hidden;
   padding-block: clamp(48px, 7vw, 96px);
@@ -276,7 +255,7 @@ section {
 }
 
 .hero .eyebrow {
-  color: var(--gold-soft);
+  color: var(--accent);
 }
 
 .hero h1 {
@@ -284,18 +263,18 @@ section {
   font-size: clamp(2.2rem, 5vw, 4rem); 
   font-style: italic;
   font-weight: 500;
-  color: #fbf5e6;
+  color: var(--fg);
   margin-top: 8px; /* Tambahkan jarak sedikit dari teks di atasnya */
   line-height: 1.15; /* Menjaga jarak antar baris tetap rapi */
 }
 
 .hero h1 span {
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .hero p.lead {
   max-width: 520px;
-  color: #d7d9e2;
+  color: var(--muted);
   font-size: 1.08rem;
 }
 
@@ -312,9 +291,9 @@ section {
   padding: 18px 0 0;
   margin: 0;
   list-style: none;
-  border-top: 1px solid rgba(201, 162, 77, .3);
+  border-top: 1px solid var(--line);
   font-size: .9rem;
-  color: #cfd2de;
+  color: var(--muted);
 }
 
 .facts li {
@@ -341,7 +320,7 @@ section {
   border: 2px solid var(--gold);
   border-radius: 999px 999px 22px 22px;
   padding: 8px;
-  box-shadow: 0 0 0 1px rgba(201, 162, 77, .25), 0 30px 60px -20px rgba(0, 0, 0, .6);
+  box-shadow: 0 0 0 1px rgba(201, 162, 77, .16), 0 24px 48px -24px rgba(11, 26, 56, .28);
 }
 
 .arch-frame img {
@@ -356,14 +335,14 @@ section {
   position: absolute;
   left: -14px;
   bottom: 28px;
-  background: var(--ivory);
+  background: #fff;
   color: var(--navy);
   border: 1px solid var(--gold);
   border-radius: 14px;
   padding: 12px 16px;
   font-size: .82rem;
   line-height: 1.3;
-  box-shadow: 0 14px 30px -10px rgba(0, 0, 0, .5);
+  box-shadow: 0 14px 30px -10px rgba(11, 26, 56, .2);
 }
 
 .badge b {
@@ -464,33 +443,33 @@ section {
 .decor,
 .about {
   background:
-    radial-gradient(900px 400px at 10% 0%, rgba(201, 162, 77, .12), transparent 70%),
-    linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, #1b3260 100%);
+    radial-gradient(900px 400px at 10% 0%, rgba(201, 162, 77, .08), transparent 70%),
+    linear-gradient(135deg, #fff 0%, var(--bg-alt) 100%);
 }
 
 .vm,
 .about {
-  color: var(--ivory);
+  color: var(--fg);
 }
 
 .about-quote {
-  color: #fbf5e6;
+  color: var(--fg);
 }
 
 .about-text {
-  color: #d7d9e2;
+  color: var(--muted);
 }
 
 .about-text em {
-  color: var(--gold-soft);
+  color: var(--accent);
 }
 
 .about-text .sign {
-  color: #fbf5e6;
+  color: var(--fg);
 }
 
 .vm .eyebrow {
-  color: var(--gold-soft);
+  color: var(--accent);
 }
 
 .vm-grid {
@@ -507,12 +486,12 @@ section {
 
 .vision h2 {
   font-size: clamp(3rem, 7vw, 5.2rem);
-  color: #fbf5e6;
+  color: var(--fg);
 }
 
 .vision p {
   font-size: 1.12rem;
-  color: #d7d9e2;
+  color: var(--muted);
   max-width: 460px;
 }
 
@@ -535,15 +514,15 @@ section {
 
 .mission li {
   padding: 24px 0;
-  border-top: 1px solid rgba(201, 162, 77, .3);
+  border-top: 1px solid var(--line);
   display: grid;
   grid-template-columns: 44px 1fr;
   gap: 12px;
-  color: #d7d9e2;
+  color: var(--muted);
 }
 
 .mission li:last-child {
-  border-bottom: 1px solid rgba(201, 162, 77, .3);
+  border-bottom: 1px solid var(--line);
 }
 
 .mission li span {
@@ -554,7 +533,7 @@ section {
 }
 
 .mission li strong {
-  color: #fbf5e6;
+  color: var(--fg);
   font-weight: 600;
 }
 
@@ -567,23 +546,23 @@ section {
 /* layanan */
 #layanan .section-head .eyebrow,
 #peti .section-head .eyebrow {
-  color: var(--gold-soft);
+  color: var(--accent);
 }
 
 #layanan .section-head h2,
 #peti .section-head h2,
 #peti .tier-head h3 {
-  color: #fbf5e6;
+  color: var(--fg);
 }
 
 #layanan .section-head > p:not(.eyebrow),
 #peti .section-head > p:not(.eyebrow),
 #peti .tier-head p {
-  color: #d7d9e2;
+  color: var(--muted);
 }
 
 #peti .tier-head {
-  border-color: rgba(201, 162, 77, .3);
+  border-color: var(--line);
 }
 
 .services-grid {
@@ -800,19 +779,19 @@ section {
 
 /* dekorasi */
 .decor {
-  color: var(--ivory);
+  color: var(--fg);
 }
 
 .decor .eyebrow {
-  color: var(--gold-soft);
+  color: var(--accent);
 }
 
 .decor .section-head p {
-  color: #cfd2de;
+  color: var(--muted);
 }
 
 .decor h2 {
-  color: #fbf5e6;
+  color: var(--fg);
 }
 
 .gallery {
@@ -825,7 +804,7 @@ section {
   margin: 0;
   overflow: hidden;
   border: 1px solid rgba(201, 162, 77, .35);
-  background: #081330;
+  background: var(--card);
 }
 
 .gallery img {
@@ -1028,8 +1007,9 @@ section {
 
 /* footer */
 footer {
-  background: var(--navy);
-  color: #cfd2de;
+  background: var(--bg-alt);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
   padding-block: 48px calc(36px);
   text-align: center;
 }
@@ -1048,7 +1028,7 @@ footer q {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.5rem;
-  color: var(--gold-soft);
+  color: var(--accent);
   quotes: "\201C" "\201D";
 }
 
@@ -1115,7 +1095,7 @@ footer small {
 }
 
 .nav-desktop a {
-  color: var(--ivory);
+  color: var(--fg);
   text-decoration: none;
   font-size: .88rem;
   letter-spacing: .06em;
@@ -1125,7 +1105,7 @@ footer small {
 
 .nav-desktop a:hover {
   opacity: 1;
-  color: var(--gold-soft);
+  color: var(--accent);
 }
 
 .btn-wa {
@@ -1178,8 +1158,8 @@ footer small {
   display: none;
   flex-direction: column;
   gap: 0;
-  background: var(--navy-2);
-  border-top: 1px solid rgba(201, 162, 77, .3);
+  background: #fff;
+  border-top: 1px solid var(--line);
   padding: 12px 0 20px;
 }
 
@@ -1188,12 +1168,12 @@ footer small {
 }
 
 .nav-mobile a {
-  color: var(--ivory);
+  color: var(--fg);
   text-decoration: none;
   font-size: 1rem;
   letter-spacing: .06em;
   padding: 14px clamp(16px, 5vw, 40px);
-  border-bottom: 1px solid rgba(201, 162, 77, .15);
+  border-bottom: 1px solid var(--line);
   opacity: .9;
 }
 
@@ -1205,7 +1185,7 @@ footer small {
 
 .nav-mobile a:hover {
   background: rgba(201, 162, 77, .1);
-  color: var(--gold-soft);
+  color: var(--accent);
 }
 
 /* Sembunyikan WA button desktop di mobile, karena sudah ada di panel */
@@ -1270,7 +1250,7 @@ body.nav-open {
   font-weight: 600;
   
   /* Membuat efek warna emas yang lebih mewah (gradient) */
-  background: linear-gradient(180deg, #f7e5b5 0%, #c9a24d 50%, #a67c2e 100%);
+  background: linear-gradient(180deg, #c9a24d 0%, #a67c2e 55%, #86611f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
