@@ -26,7 +26,7 @@ const images = [casket.image, ...(casket.additionalImages ?? [])];
           <img
             src={image}
             alt={`Peti ${casket.name}${images.length > 1 ? `, foto ${index + 1}` : ''}`}
-            loading={loading}
+            loading={images.length > 1 ? 'eager' : loading}
             decoding="async"
             fetchpriority={priority && index === 0 ? 'high' : 'auto'}
           />
