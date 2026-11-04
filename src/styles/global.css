@@ -730,13 +730,36 @@ section {
 }
 
 .casket .plate {
+  position: relative;
   background: var(--plate);
   aspect-ratio: 4 / 5;        /* portrait */
   min-height: 240px;
   overflow: hidden;
-  display: grid;
-  place-items: center;
+}
+
+.casket-slides {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.casket-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.casket-photo {
+  flex: 0 0 100%;
+  min-width: 0;
   padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  overflow: hidden;
+  scroll-snap-align: start;
 }
 
 .casket .plate img {
@@ -745,6 +768,83 @@ section {
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+.casket-slide-arrow {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .9);
+  color: var(--fg);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.casket-slide-previous {
+  left: 12px;
+}
+
+.casket-slide-next {
+  right: 12px;
+}
+
+.casket-slide-count {
+  position: absolute;
+  z-index: 1;
+  right: 12px;
+  bottom: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .6);
+  color: #fff;
+  font-size: .75rem;
+  pointer-events: none;
+}
+
+.photo-viewer {
+  position: fixed;
+  inset: 0;
+  width: min(94vw, 1100px);
+  max-width: none;
+  max-height: 94vh;
+  padding: 48px 16px 16px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  overflow: visible;
+}
+
+.photo-viewer::backdrop {
+  background: rgba(0, 0, 0, .82);
+}
+
+.photo-viewer img {
+  display: block;
+  width: 100%;
+  height: min(80vh, 900px);
+  object-fit: contain;
+}
+
+.photo-viewer form {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+}
+
+.photo-viewer-close {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--fg);
+  cursor: pointer;
 }
 
 .casket .info {

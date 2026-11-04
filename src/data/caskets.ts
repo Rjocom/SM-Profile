@@ -3,6 +3,7 @@ export type Casket = {
   description: string;
   price: string;
   image: string;
+  additionalImages?: string[];
 };
 
 export type CasketTier = {
@@ -21,18 +22,18 @@ export const casketTiers: CasketTier[] = [
     name: 'Premium',
     description: 'Koleksi peti kelas Premium',
     items: [
-      {
-        name: 'Terra',
-        description: '-.',
-        price: 'Rp 29.000.000',
-        image: '/images/peti/casket-terra.webp',
-      },
-      {
-        name: 'Ivory',
-        description: '-.',
-        price: 'Rp 21.000.000',
-        image: '/images/peti/casket-ivory.webp',
-      },
+      // {
+      //   name: 'Terra',
+      //   description: '-.',
+      //   price: 'Rp 29.000.000',
+      //   image: '/images/peti/casket-terra.webp',
+      // },
+      // {
+      //   name: 'Ivory',
+      //   description: '-.',
+      //   price: 'Rp 21.000.000',
+      //   image: '/images/peti/casket-ivory.webp',
+      // },
       {
         name: 'Montana',
         description: '-',
@@ -92,6 +93,7 @@ export const casketTiers: CasketTier[] = [
         description: '-.',
         price: 'Rp 7.500.000',
         image: '/images/peti/casket-polaris.webp',
+        additionalImages: ['/images/peti/casket-polaris2.webp'],
       },
       {
         name: 'Vale',
@@ -110,6 +112,7 @@ export const casketTiers: CasketTier[] = [
         description: '-.',
         price: 'Rp 5.000.000',
         image: '/images/peti/casket-pluton.webp',
+        additionalImages: ['/images/peti/casket-pluton2.webp'],
       },
       {
         name: 'Orion',

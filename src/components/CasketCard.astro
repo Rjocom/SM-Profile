@@ -10,18 +10,51 @@ const { casket, loading, priority } = Astro.props;
 const href = waLink(
   `Halo Serenity Memorial, saya ingin menanyakan peti ${casket.name}.`
 );
+const images = [casket.image, ...(casket.additionalImages ?? [])];
 ---
 
 <article class="casket fade-in">
   <div class="plate">
-    <img
-      src={casket.image}
-      alt={`Peti ${casket.name}`}
-      loading={loading}
-      decoding="async"
-      fetchpriority={priority ? 'high' : 'auto'}
-    />
+    <div class="casket-slides">
+      {images.map((image, index) => (
+        <button
+          class="casket-photo"
+          type="button"
+          data-slide={index}
+          aria-label={`Lihat foto ${index + 1} peti ${casket.name} ukuran penuh`}
+        >
+          <img
+            src={image}
+            alt={`Peti ${casket.name}${images.length > 1 ? `, foto ${index + 1}` : ''}`}
+            loading={loading}
+            decoding="async"
+            fetchpriority={priority && index === 0 ? 'high' : 'auto'}
+          />
+        </button>
+      ))}
+    </div>
+    {images.length > 1 && (
+      <>
+        <button
+          class="casket-slide-arrow casket-slide-previous"
+          type="button"
+          aria-label={`Foto sebelumnya untuk peti ${casket.name}`}
+        >‹</button>
+        <button
+          class="casket-slide-arrow casket-slide-next"
+          type="button"
+          aria-label={`Foto berikutnya untuk peti ${casket.name}`}
+        >›</button>
+        <span class="casket-slide-count" aria-live="polite">1 / {images.length}</span>
+      </>
+    )}
   </div>
+  <dialog class="photo-viewer" aria-label={`Foto peti ${casket.name}`}>
+    <form method="dialog">
+      <button class="photo-viewer-close" aria-label="Tutup foto">Tutup</button>
+    </form>
+    <img alt={`Peti ${casket.name}`} />
+  </dialog>
   <div class="info">
     <h3>{casket.name}</h3>
     <p>{casket.description}</p>
@@ -31,3 +64,53 @@ const href = waLink(
     <a class="ask" href={href} target="_blank" rel="noopener">Tanya model ini</a>
   </div>
 </article>
+
+<script>
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const slideArrow = event.target.closest<HTMLButtonElement>('.casket-slide-arrow');
+    if (slideArrow) {
+      const plate = slideArrow.closest<HTMLElement>('.plate');
+      const slidesContainer = plate?.querySelector<HTMLElement>('.casket-slides');
+      if (!slidesContainer) return;
+
+      const slides = slidesContainer.querySelectorAll<HTMLButtonElement>('.casket-photo');
+      const currentIndex = Number(slidesContainer.dataset.currentSlide ?? 0);
+      const direction = slideArrow.classList.contains('casket-slide-next') ? 1 : -1;
+      const nextIndex = (currentIndex + direction + slides.length) % slides.length;
+      const nextSlide = slides[nextIndex];
+      if (nextSlide) {
+        slidesContainer.dataset.currentSlide = String(nextIndex);
+        slidesContainer.scrollTo({ left: nextSlide.offsetLeft, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    const photoButton = event.target.closest<HTMLButtonElement>('.casket-photo');
+    if (!photoButton) return;
+
+    const card = photoButton.closest('.casket');
+    const dialog = card?.querySelector<HTMLDialogElement>('.photo-viewer');
+    const thumbnail = photoButton.querySelector('img');
+    const fullImage = dialog?.querySelector('img');
+    if (!dialog || !thumbnail || !fullImage) return;
+
+    fullImage.src = thumbnail.src;
+    fullImage.alt = thumbnail.alt;
+    dialog.showModal();
+  });
+
+  document.addEventListener('scroll', (event) => {
+    if (!(event.target instanceof HTMLElement) || !event.target.matches('.casket-slides')) return;
+
+    const slidesContainer = event.target;
+    const slides = slidesContainer.querySelectorAll('.casket-photo');
+    const currentIndex = Math.round(slidesContainer.scrollLeft / slidesContainer.clientWidth);
+    const plate = slidesContainer.closest('.plate');
+    const count = plate?.querySelector<HTMLElement>('.casket-slide-count');
+
+    slidesContainer.dataset.currentSlide = String(currentIndex);
+    if (count) count.textContent = `${currentIndex + 1} / ${slides.length}`;
+  }, true);
+</script>
