@@ -866,6 +866,37 @@ section {
   font-size: .95rem;
 }
 
+.casket-description {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.casket-description.is-collapsed {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+}
+
+.casket-description-toggle {
+  margin-top: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.casket-description-toggle:hover {
+  text-decoration: underline;
+}
+
 .casket .ask {
   margin-top: 6px;
   font-weight: 600;

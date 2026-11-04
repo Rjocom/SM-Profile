@@ -57,7 +57,18 @@ const images = [casket.image, ...(casket.additionalImages ?? [])];
   </dialog>
   <div class="info">
     <h3>{casket.name}</h3>
-    <p>{casket.description}</p>
+    <div class="casket-description-wrap">
+      <p class:list={['casket-description', { 'is-collapsed': casket.description.length > 100 }]}>
+        {casket.description}
+      </p>
+      {casket.description.length > 100 && (
+        <button
+          class="casket-description-toggle"
+          type="button"
+          aria-expanded="false"
+        >Baca selengkapnya</button>
+      )}
+    </div>
     <p class="price">
       <small>Harga</small>{casket.price}
     </p>
@@ -68,6 +79,22 @@ const images = [casket.image, ...(casket.additionalImages ?? [])];
 <script>
   document.addEventListener('click', (event) => {
     if (!(event.target instanceof Element)) return;
+
+    const descriptionToggle = event.target.closest<HTMLButtonElement>(
+      '.casket-description-toggle'
+    );
+    if (descriptionToggle) {
+      const description = descriptionToggle
+        .closest('.casket-description-wrap')
+        ?.querySelector('.casket-description');
+      if (!description) return;
+
+      const isExpanded = descriptionToggle.getAttribute('aria-expanded') === 'true';
+      descriptionToggle.setAttribute('aria-expanded', String(!isExpanded));
+      description.classList.toggle('is-collapsed', isExpanded);
+      descriptionToggle.textContent = isExpanded ? 'Baca selengkapnya' : 'Tampilkan lebih sedikit';
+      return;
+    }
 
     const slideArrow = event.target.closest<HTMLButtonElement>('.casket-slide-arrow');
     if (slideArrow) {
