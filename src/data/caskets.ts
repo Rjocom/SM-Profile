@@ -24,19 +24,19 @@ export const casketTiers: CasketTier[] = [
     items: [
       {
         name: 'Custom 1',
-        description: '-.',
+        description: 'Menampilkan balutan warna emas yang menawan dengan desain bersudut dan tutup kaca penuh yang dapat dibuka. Bagian samping dihiasi relief Perjamuan Terakhir serta motif geometris di sepanjang tepi peti. Interiornya dilapisi kain putih bertekstur lembut, sementara sisi dalam tutup menampilkan ilustrasi Yesus Sang Gembala Baik. Perpaduan detail artistik dan finishing emas mengilap menghadirkan tampilan yang megah, anggun, dan berkelas.',
         price: '',
         image: '/images/peti/optimized/casket-custom1.webp',
       },
       {
         name: 'custom 3',
-        description: '-.',
-        price: '',
+        description: 'Menampilkan perpaduan warna merah maroon dan putih yang harmonis, menghadirkan kesan klasik dan elegan. Memiliki desain bersudut dengan tutup kaca penuh yang dapat dibuka, dipadukan dengan ornamen perjamuan emas pada bagian samping dan aksen salib dekoratif di bagian depan. Interior peti dilapisi kain putih dengan detail lipatan yang rapi, sementara sisi dalam tutup dihiasi ilustrasi Yesus Sang Gembala Baik. Kombinasi warna yang kontras, sentuhan ornamen emas, dan finishing mengilap memberikan tampilan yang anggun, artistik, dan berwibawa.',
+        price: '.',
         image: '/images/peti/optimized/casket-custom3.webp',
       },
       {
         name: 'Montana',
-        description: 'Memiliki perpaduan warna putih dan emas dengan ornamen yang menonjol. Dilengkapi ukiran dekoratif pada bagian sudut, pegangan berwarna emas, serta motif geometris di sepanjang tepi peti. Tampilan yang detail memberikan kesan megah dan berkarakter.',
+        description: 'Memiliki perpaduan warna putih dan emas dengan ornamen yang menonjol. Dilengkapi  dekoratif pada bagian sudut, pegangan berwarna emas, serta motif geometris di sepanjang tepi peti. Tampilan yang detail memberikan kesan megah dan berkarakter.',
         price: 'Rp 14.000.000',
         image: '/images/peti/optimized/casket-montana.webp',
       },
