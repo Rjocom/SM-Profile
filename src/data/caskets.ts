@@ -22,18 +22,18 @@ export const casketTiers: CasketTier[] = [
     name: 'Premium',
     description: 'Koleksi peti kelas Premium',
     items: [
-      // {
-      //   name: 'Terra',
-      //   description: '-.',
-      //   price: 'Rp 29.000.000',
-      //   image: '/images/peti/casket-terra.webp',
-      // },
-      // {
-      //   name: 'Ivory',
-      //   description: '-.',
-      //   price: 'Rp 21.000.000',
-      //   image: '/images/peti/casket-ivory.webp',
-      // },
+      {
+        name: 'Custom 1',
+        description: '-.',
+        price: 'Rp 29.000.000',
+        image: '/images/peti/optimized/casket-custom1.webp',
+      },
+      {
+        name: 'custom 3',
+        description: '-.',
+        price: 'Rp 21.000.000',
+        image: '/images/peti/optimized/casket-custom3.webp',
+      },
       {
         name: 'Montana',
         description: 'Memiliki perpaduan warna putih dan emas dengan ornamen yang menonjol. Dilengkapi ukiran dekoratif pada bagian sudut, pegangan berwarna emas, serta motif geometris di sepanjang tepi peti. Tampilan yang detail memberikan kesan megah dan berkarakter.',
