@@ -95,12 +95,12 @@ export const casketTiers: CasketTier[] = [
         image: '/images/peti/optimized/casket-polaris.webp',
         additionalImages: ['/images/peti/optimized/casket-polaris2.webp'],
       },
-      // {
-      //   name: 'Vale',
-      //   description: 'Hadir dengan desain minimalis berwarna putih yang anggun, dilengkapi tutup bertingkat dengan kaca 1/3 pada bagian atas. Aksen salib emas pada bagian depan berpadu harmonis dengan gambar Perjamuan Terakhir di sisi peti. Garis desain yang tegas dan finishing mengilap menghadirkan tampilan bersih, elegan, dan berkelas.',
-      //   price: 'Rp 6.500.000',
-      //   image: '/images/peti/optimized/casket-vale.webp',
-      // },
+      {
+        name: 'Vale',
+        description: 'Hadir dengan desain minimalis berwarna putih yang anggun, dilengkapi tutup bertingkat dengan kaca 1/3 pada bagian atas. Aksen salib emas pada bagian depan berpadu harmonis dengan gambar Perjamuan Terakhir di sisi peti. Garis desain yang tegas dan finishing mengilap menghadirkan tampilan bersih, elegan, dan berkelas.',
+        price: 'Rp 6.500.000',
+        image: '/images/peti/optimized/casket-vale.webp',
+      },
     ],
   },
   {
