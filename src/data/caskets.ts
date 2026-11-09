@@ -25,13 +25,13 @@ export const casketTiers: CasketTier[] = [
       {
         name: 'Custom 1',
         description: '-.',
-        price: 'Rp 29.000.000',
+        price: '',
         image: '/images/peti/optimized/casket-custom1.webp',
       },
       {
         name: 'custom 3',
         description: '-.',
-        price: 'Rp 21.000.000',
+        price: '',
         image: '/images/peti/optimized/casket-custom3.webp',
       },
       {
