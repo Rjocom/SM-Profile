@@ -31,7 +31,7 @@ export const casketTiers: CasketTier[] = [
       {
         name: 'custom 3',
         description: 'Menampilkan perpaduan warna merah maroon dan putih yang harmonis, menghadirkan kesan klasik dan elegan. Memiliki desain bersudut dengan tutup kaca penuh yang dapat dibuka, dipadukan dengan ornamen perjamuan emas pada bagian samping dan aksen salib dekoratif di bagian depan. Interior peti dilapisi kain putih dengan detail lipatan yang rapi, sementara sisi dalam tutup dihiasi ilustrasi Yesus Sang Gembala Baik. Kombinasi warna yang kontras, sentuhan ornamen emas, dan finishing mengilap memberikan tampilan yang anggun, artistik, dan berwibawa.',
-        price: '.',
+        price: '',
         image: '/images/peti/optimized/casket-custom3.webp',
       },
       {
